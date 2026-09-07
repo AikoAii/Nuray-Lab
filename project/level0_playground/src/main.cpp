@@ -52,13 +52,13 @@ int main() {
 
     // 2. DRAWING
     BeginDrawing();
-    ClearBackground(DARKBLUE);
+    ClearBackground(BLACK);
 
     DrawRectangle((int)player.position.x, (int)player.position.y, player.size,
                   player.size, player.color);
 
-    DrawText("Gunakan tombol panah (Arrow Keys) untuk menggerakan kotak!", 10,
-             10, 15, WHITE);
+    DrawText("Gunakan tombol panah (Arrow Keys) untuk menggerakan kotak!", 180,
+             400, 15, WHITE);
 
     EndDrawing();
   }

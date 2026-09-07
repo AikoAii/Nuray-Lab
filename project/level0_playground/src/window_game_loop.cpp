@@ -15,8 +15,8 @@ int main() {
 
     // --- Drawing (rendering grafis) ---
     BeginDrawing();
-    ClearBackground(DARKBLUE);
-    DrawText("Selamat datang di C++ Game Lab!", 190, 200, 20, LIGHTGRAY);
+    ClearBackground(BLACK);
+    DrawText("Selamat datang di C++ Game Lab!", 225, 200, 20, WHITE);
 
     EndDrawing();
   }
