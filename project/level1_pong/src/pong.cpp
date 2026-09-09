@@ -1,6 +1,15 @@
+/*
+ * @file pong.cpp
+ * @author Annur Musthofa (Nuy)
+ * @brief GameDev level-1: Pong Game pakai raylib
+ * @version 1.1
+ * @date 07-09-2026
+ */
+
+// Raylib
 #include "raylib.h"
 
-// struktur padel
+// struktur paddle
 struct Paddle {
   Rectangle rect;
   float speed;
@@ -16,16 +25,18 @@ struct Ball {
 };
 
 int main() {
-  const int screenWidth = 800;
-  const int screenHeight = 450;
+  const int screenWidth = 800;  // lebar layar
+  const int screenHeight = 450; // tinggi layar
 
+  // init window
   InitWindow(screenWidth, screenHeight, "C++ Game Lab - Level 1: Pong Game");
-  SetTargetFPS(120);
+  SetTargetFPS(120); // set FPS
 
   // init Paddle player;
   Paddle player = {
       {50.0f, (screenHeight / 2.0f) - 40.0f, 20.0f, 80.0f}, 500.0f, BLUE};
 
+  // init enemy
   Paddle enemy = {
       {(float)screenWidth - 70.0f, (screenHeight / 2.0f) - 40.0f, 20.0f, 80.0f},
       350.0f,
@@ -37,16 +48,18 @@ int main() {
                10.0f,
                YELLOW};
 
-  // skor player
+  // skor awal player
   int playerScore = 0;
 
+  // Main game loop
   while (!WindowShouldClose()) {
     float dt = GetFrameTime();
 
-    // update player
+    // update posisi player
+    // keatas
     if (IsKeyDown(KEY_W) || IsKeyDown(KEY_UP))
       player.rect.y -= player.speed * dt;
-
+    // kebawah
     if (IsKeyDown(KEY_S) || IsKeyDown(KEY_DOWN))
       player.rect.y += player.speed * dt;
 
@@ -62,7 +75,7 @@ int main() {
     if (ball.position.y > enemyCenter) {
       enemy.rect.y += enemy.speed * dt; // kejar ke bawah
     } else if (ball.position.y < enemyCenter)
-      enemy.rect.y -= enemy.speed * dt;
+      enemy.rect.y -= enemy.speed * dt; // kejar ke atas
 
     // batas layar enemy
     if (enemy.rect.y < 0)
@@ -86,7 +99,7 @@ int main() {
       ball.velocity.y *= -1.0f;
     }
 
-    // buat rectangle virtual agar bisa dicek dengan CheckCollisionRecs
+    // rectangle virtual biar bisa dicek dengan CheckCollisionRecs
     Rectangle ballRect = {ball.position.x - ball.radius,
                           ball.position.y - ball.radius, ball.radius * 2,
                           ball.radius * 2};
@@ -149,26 +162,6 @@ int main() {
     else if (ball.velocity.x < 0)
       ball.velocity.x = -ballSpeed;
 
-    // BeginDrawing();
-    //
-    // ClearBackground(GREEN);
-    //
-    // // garis tengah sebagai net
-    // for (int y = 0; y < screenHeight; y += 20) {
-    //   DrawRectangle(screenWidth / 2 - 2, y, 4, 10, WHITE);
-    // }
-    //
-    // DrawRectangle(0, screenHeight / 2 - 2, 800, 2, DARKGREEN);
-    //
-    // // gambar Player dan bola
-    // DrawRectangleRec(player.rect, player.color);
-    // DrawRectangleRec(enemy.rect, enemy.color);
-    // DrawCircleV(ball.position, ball.radius, ball.color);
-    //
-    // // gambar skor player
-    // DrawText(TextFormat("SCORE: %d", playerScore), 20, 20, 40, WHITE);
-    //
-    // EndDrawing();
     BeginDrawing();
 
     ClearBackground(Color{10, 12, 18, 255});
