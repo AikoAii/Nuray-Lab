@@ -8,7 +8,6 @@
  */
 
 #include "raylib.h"
-#include <chrono>
 
 // struktur biji
 struct Biji {
@@ -39,7 +38,7 @@ int main() {
   SetTargetFPS(120);
 
   // util
-  constexpr float gap{200.0f};
+  constexpr float gap{230.0f};
   constexpr float gravity{1200.0f};
   constexpr float jumpForce{-400.0f};
   int score{0};
@@ -164,6 +163,7 @@ int main() {
         CheckCollisionRecs(bijiRect, pipeABottom) ||
         CheckCollisionRecs(bijiRect, pipeBTop) ||
         CheckCollisionRecs(bijiRect, pipeBBottom)) {
+      score = 0;
     }
 
     BeginDrawing();
