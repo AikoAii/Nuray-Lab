@@ -1,8 +1,8 @@
 #include "raylib.h"
 
 int main() {
-  const int screenWidth = 450;
-  const int screenHeight = 800;
+  constexpr int screenWidth = 450;
+  constexpr int screenHeight = 800;
   InitWindow(screenWidth, screenHeight, "Gravity Test");
   SetTargetFPS(120);
 
