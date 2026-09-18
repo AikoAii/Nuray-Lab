@@ -386,23 +386,23 @@ int main() {
   //=============================================================
 
   /*
-   * Beri seed ke random generator
-   * supaya value dari GetRandomValue()
-   * tidak ikut pola yg sama setiap program dirun
+   * Buat seed random
+   * Biar value dari GetRandomValue()
+   * gk ikut pola yg sama tiap program dirun
    */
   SetRandomSeed(static_cast<unsigned int>(GetTime() * 1000));
 
-  // =========================================================================
-  // MEMBUAT OBJEK GAME
-  // =======================================================================
-  Ball ball = CreateBall();                              // Ball sebagai player
+  // ======================
+  // OBJEK GAME
+  // ===========================
+  Ball ball = CreateBall();                              // Ball user
   Pipe pipeA = CreatePipe(SCREEN_WIDTH);                 // Pipa pertama
   Pipe pipeB = CreatePipe(SCREEN_WIDTH + PIPE_DISTANCE); // Pipa kedua
 
   // SCORE AWAL
   int score = 0;
 
-  // set permain ke PLAYING
+  // set player ke PLAYING
   GameState gameState = GameState::PLAYING;
 
   //=================================================
@@ -426,7 +426,7 @@ int main() {
     float dt = GetFrameTime();
 
     /*
-     * batasi delta time untuk cegah physic
+     * batasi delta time buat cegah physic
      * mengalami lompatan besar pas lag
      */
 
